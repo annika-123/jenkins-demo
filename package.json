@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Running tests...\" && exit 0",
+    "test": "jest --ci",
     "build": "echo \"Building project...\""
-  }
-}
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+}}
