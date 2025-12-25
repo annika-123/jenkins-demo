@@ -7,5 +7,7 @@
     "build": "echo \"Building project...\""
   },
   "devDependencies": {
-    "jest": "^29.7.0"
-}}
+    "jest": "^29.7.0",
+    "jest-junit": "^16.0.0"
+  }
+}

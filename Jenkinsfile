@@ -17,11 +17,17 @@ pipeline {
             }
         }
 
-        stage('Run test') {
-            steps {
-                sh 'npm test'
+        stage('Run Tests') {
+          steps {
+            sh 'npm test -- --json --outputFile=results.json'
+        }
+            post {
+                always {
+                    junit allowEmptyResults: true, testResults: '**/junit.xml'
+                }
             }
         }
+
         stage ('Build'){
             steps{
                 sh 'npm run build'
