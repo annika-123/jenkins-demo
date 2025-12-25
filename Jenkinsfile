@@ -21,6 +21,28 @@ pipeline {
     steps {
         sh 'npm test || exit 1'
     }
+    stage('E2E Tests - Playwright') {
+    agent {
+        docker {
+            image 'mcr.microsoft.com/playwright:v1.57.0-noble'
+            args '-u root --ipc=host'
+        }
+    }
+    steps {
+        sh 'npm ci'
+        sh 'npx playwright install --with-deps'
+        sh 'npm run test:e2e'
+    }
+    post {
+        success {
+            echo "🎯 Playwright Tests Passed!"
+        }
+        failure {
+            echo "❌ Playwright Tests Failed!"
+        }
+    }
+}
+
     post {
         always {
             junit allowEmptyResults: true, testResults: '**/junit.xml'

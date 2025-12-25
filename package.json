@@ -4,9 +4,11 @@
   "scripts": {
     "start": "node index.js",
     "test": "jest --ci",
-    "build": "echo \"Building project...\""
+    "build": "echo \"Building project...\"",
+    "test:e2e": "npx playwright test --headed=false"
   },
   "devDependencies": {
+    "@playwright/test": "^1.57.0",
     "jest": "^29.7.0",
     "jest-junit": "^16.0.0"
   }
